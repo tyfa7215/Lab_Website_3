@@ -253,10 +253,11 @@ app.get('/player_info/post', function(req, res) {
   var currentPlayer = req.query.player_choice;
   // var gameList = 'select * from football_games;';
   var displayPlayer = 'SELECT * FROM football_players WHERE football_players.id=\'' + currentPlayer + '\';';
-  // var displayPlayer = 'SELECT * FROM football_players WHERE football_players.name=\'Cedric Vega\';';
   var playerList = 'select * from football_players;';
-  var gamesPlayed = 'SELECT COUNT(*) FROM (SELECT id FROM football_players, football_games ' + 'WHERE football_players.id = ANY(football_games.players)) ' + 'AS subq WHERE subq.id = ' + currentPlayer + ';';
-  // var gamesPlayed = 'SELECT count(*) FROM football_games WHERE ' + currentPlayer + '=ANY(football_games.players);';
+  // test query from piazza
+  // var gamesPlayed = 'SELECT COUNT(*) FROM (SELECT id FROM football_players, football_games ' + 'WHERE football_players.id = ANY(football_games.players)) ' + 'AS subq WHERE subq.id = ' + currentPlayer + ';';
+  // my query
+  var gamesPlayed = 'SELECT count(*) FROM football_games WHERE ' + currentPlayer + '=ANY(football_games.players);';
 
   console.log(currentPlayer);
   console.log(displayPlayer);
